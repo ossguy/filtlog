@@ -57,7 +57,8 @@ http://mayflowerphoto.com/logs/
 filtlog expects its configuration file to be located in filtlog.conf.  An
 example configuration file is included as filtlog.conf.example.  You can copy
 that file to filtlog.conf and modify it to suit your needs.  Full details on the
-various configuration file options are provided inline in filtlog.conf.example.
+various configuration file options, including how to use user_agents.rb to help
+filter results, are provided inline in filtlog.conf.example.
 
 
 4. Performance
