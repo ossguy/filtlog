@@ -20,9 +20,21 @@
 
 if ARGV.empty?
 	warn ""
+	warn "filtlog - a web server log filter/summarizer"
+	warn "Copyright 2009 Denver Gingerich"
+	warn "http://github.com/ossguy/filtlog"
+	warn ""
+	warn "This program is free software; you may redistribute it under the"
+	warn "terms of the ISC licence as shown at the top of filtlog.rb."
+	warn ""
 	warn "Usage: #{$0} <log_files(s)>"
 	warn ""
-	warn "Log files must be in Apache Combined Log Format."
+	warn "This program creates a list of all pages that were accessed given"
+	warn "the web server logs.  The list shows how many accesses each page"
+	warn "had, from highest to lowest, and also shows how many time each"
+	warn "referrer was used to access each page.  It reads configuration"
+	warn "settings from filtlog.conf in the current directory if available."
+	warn "Log files are assumed to be in Apache Combined Log Format."
 	warn ""
 
 	exit 1
