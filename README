@@ -12,6 +12,10 @@ http://github.com/ossguy/filtlog
 1. Running filtlog
 ------------------
 
+filtlog requires Ruby to run.  If you don't have Ruby, you can download it from
+http://www.ruby-lang.org/en/downloads/ or, if you're using Ubuntu, you can run
+"sudo apt-get install ruby".
+
 To run filtlog with the default options, simply pass the web server log file(s)
 you want to summarize to filtlog.rb (ie. "./filtlog.rb access.log").  The log
 files are assumed to be in Apache Combined Log Format.  The output will look
