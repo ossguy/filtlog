@@ -17,7 +17,7 @@ you want to summarize to filtlog.rb (ie. "./filtlog.rb access.log").  The log
 files are assumed to be in Apache Combined Log Format.  The output will look
 something like this:
 
-874     /?p=172
+874     /?p=172 Vimeo Downloader 0.1 released
     230     -
     75      http://ossguy.com/?p=172
     13      http://www.google.com/search?q=vimeo+downloader&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:en-US:official&client=firefox-a
@@ -37,6 +37,10 @@ The first line is the page with the most hits (/?p=172) preceded by the number
 of hits it received (874).  The lines that follow are the referrers used to find
 that page, preceded by the number of times the referrer was used.  For more
 information on HTTP referrers, see http://en.wikipedia.org/wiki/HTTP_referrer.
+
+In order to get page descriptions, like "Vimeo Downloader 0.1 released" above,
+you need to add the corresponding information to page_names in filtlog.conf.
+For more details, see the inline comments in filtlog.conf.example.
 
 
 2. Example log files
