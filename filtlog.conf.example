@@ -1,18 +1,32 @@
-# number of pages and referers per page to display in the stats (<= 0 for all)
+# filtlog.conf.example - example configuration file for filtlog
+
+# num_pages represents the number of pages to display in the output.  To specify
+# that all pages should be displayed in the output, use a value less than or
+# equal to 0.  filtlog will only display the top N results (by number of page
+# views), including their associated referers, where N is the value of
+# num_pages.
 num_pages = 0
+
+# num_referers represents the number of referers per page to display in the
+# output.  To specify that all referers should be displayed in the output, use a
+# value less than or equal to 0.  filtlog will only display the top M referers
+# (by number of referrals for a given page) for each page, where M is the value
+# of num_referers.
 num_referers = 0
 
-# a list of page prefixes that should be left out of the stats
-ignore_prefixes = [
-	'/?feed=',
-	'/wp-',
-	'/favicon.ico',
-	'/avatar',
-	'/robots.txt',
-	'/css'
-]
-
-# ignore entries made by user agents containing these strings (mostly bots)
+# bot_ids is a list of user agent substrings for user agents that should be
+# ignored in the results, such as search engine bots.  If the substring matches
+# any part of a given user agent, accesses from that user agent will not appear
+# in the results.  For example, "Mozilla/5.0 (compatible; Googlebot/2.1;
+# +http://www.google.com/bot.html)" will be matched by one of the substrings
+# listed below: 'http://www.google.com/bot.html'.  Feel free to submit updates
+# to this list to the filtlog maintainer (see the README file).
+#
+# To determine which user agents might be bots, run user_agents.rb on your log
+# files.  This will show you the user agents that most often access your web
+# site.  Adding high-ranking bots from there to this list will improve the
+# accuracy of filtlog's results by increasing the percentage of hits initiated
+# by real people that appear in the results.
 bot_ids = [
 	'http://help.yahoo.com/help/us/ysearch/slurp',
 	'http://www.google.com/bot.html',
@@ -31,7 +45,24 @@ bot_ids = [
 	'http://www.similarpages.com'
 ]
 
-# mapping of page names to descriptions that will be shown next to the page name
+# Any pages whose names start with an element of ignore_prefixes will not be
+# included in the filtlog results output.  This can be useful for removing
+# frequently-accessed by uninteresting (to the web site owner) parts of a web
+# site like robots.txt or favicon.ico.  This list is likely to be highly
+# web site-specific.
+ignore_prefixes = [
+	'/?feed=',
+	'/wp-',
+	'/favicon.ico',
+	'/avatar',
+	'/robots.txt',
+	'/css'
+]
+
+# page_names maps page names to their descriptions.  These are displayed in the
+# filtlog results next to the page name.  This can be useful for showing the
+# titles of blog articles or other parts of a web site that have a nondescript
+# page name.
 page_names = {
 	'/?p=284'	=> 'dynamic_fgets: Reading long input lines in C',
 	'/?p=266'	=> 'Moonlight and the Microsoft Media Pack',
