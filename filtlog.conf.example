@@ -1,0 +1,57 @@
+# number of pages and referers per page to display in the stats (<= 0 for all)
+num_pages = 0
+num_referers = 0
+
+# a list of page prefixes that should be left out of the stats
+ignore_prefixes = [
+	'/?feed=',
+	'/wp-',
+	'/favicon.ico',
+	'/avatar',
+	'/robots.txt',
+	'/css'
+]
+
+# ignore entries made by user agents containing these strings (mostly bots)
+bot_ids = [
+	'http://help.yahoo.com/help/us/ysearch/slurp',
+	'http://www.google.com/bot.html',
+	'http://search.msn.com/msnbot.htm',
+	'http://www.majestic12.co.uk/bot.php',
+	'http://www.baidu.com/search/spider.htm',
+	'http://spinn3r.com/robot',
+	'support.voilabot@orange-ftgroup.com',
+	'http://about.ask.com/en/docs/about/webmasters.shtml',
+	'msnbot',
+	'crawler@netseer.com',
+	'http://WebDataCentre.com/',
+	'vertical-crawl-support@yahoo-inc.com',
+	'http://www.cuil.com/twiceler/robot.html',
+	'http://www.youdao.com/help/webmaster/spider/',
+	'http://www.similarpages.com'
+]
+
+# mapping of page names to descriptions that will be shown next to the page name
+page_names = {
+	'/?p=284'	=> 'dynamic_fgets: Reading long input lines in C',
+	'/?p=266'	=> 'Moonlight and the Microsoft Media Pack',
+	'/?p=257'	=> 'Libre x86 C compilers for Unix-like systems',
+	'/?p=252'	=> 'Evaluating codec freedom',
+	'/?p=247'	=> 'TEDTalks Downloader 0.1 released',
+	'/?p=233'	=> 'The codec dilemma',
+	'/?p=226'	=> 'Why Flash is doomed',
+	'/?p=206'	=> 'What\'s on a CharlieTicket magnetic stripe',
+	'/?p=196'	=> 'Backing up your DreamHost data',
+	'/?p=187'	=> 'Blip Unembed 0.1 released',
+	'/?p=183'	=> 'OLPC Give One, Get One on now',
+	'/?p=172'	=> 'Vimeo Downloader 0.1 released',
+	'/?p=153'	=> 'Flash required for Gmail voice and video chat',
+	'/?p=145'	=> 'Why I haven’t installed a Flash player',
+	'/?p=128'	=> 'Ideas for a better programming language',
+	'/?p=121'	=> 'StarCraft Power Saver 0.3 released',
+	'/?p=108'	=> 'Lessig, others: There is more to the world than just the USA',
+	'/?p=101'	=> 'Positive change: Green Party on copyright',
+	'/?p=86'	=> 'Clarifying the restrictions on DVD playback',
+	'/?p=80'	=> 'StarCraft Power Saver 0.2 released',
+	'/?p=27'	=> 'OLPC XO and ASUS Eee PC SD card performance'
+}
