@@ -22,6 +22,7 @@ if ARGV.empty?
 	warn ""
 	warn "filtlog user agent summarizer"
 	warn "Copyright 2009 Denver Gingerich"
+	warn "http://github.com/ossguy/filtlog"
 	warn ""
 	warn "This program is free software; you may redistribute it under the"
 	warn "terms of the ISC licence as shown at the top of user_agents.rb."
