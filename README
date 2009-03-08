@@ -1,0 +1,83 @@
+filtlog - a web server log filter/summarizer
+
+http://github.com/ossguy/filtlog
+
+
+1. Running filtlog
+2. Example log files
+3. Configuring filtlog
+4. Performance
+
+
+1. Running filtlog
+------------------
+
+To run filtlog with the default options, simply pass the web server log file(s)
+you want to summarize to filtlog.rb (ie. "./filtlog.rb access.log").  The log
+files are assumed to be in Apache Combined Log Format.  The output will look
+something like this:
+
+874     /?p=172
+    230     -
+    75      http://ossguy.com/?p=172
+    13      http://www.google.com/search?q=vimeo+downloader&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:en-US:official&client=firefox-a
+    6       http://www.google.com/search?hl=en&q=vimeo+downloader&aq=f&oq=
+    5       http://ossguy.com/
+...
+846     /
+    616     -
+    21      http://ossguy.com/?p=266
+    14      http://ossguy.com/?p=226
+    12      http://www.followsite.com/bot.html
+    12      http://www.gnu.org/people/
+    11      http://ossguy.com/
+...
+
+The first line is the page with the most hits (/?p=172) preceded by the number
+of hits it received (874).  The lines that follow are the referrers used to find
+that page, preceded by the number of times the referrer was used.  For more
+information on HTTP referrers, see http://en.wikipedia.org/wiki/HTTP_referrer.
+
+
+2. Example log files
+--------------------
+
+If you want to see how filtlog works but don't have any log files to test it
+with, you can find log files online.  Here are some log files found through a
+Google search for 'get googlebot "yahoo slurp"':
+
+http://www.myndrun.is/log/
+http://abc-ls.com/logs/
+http://mayflowerphoto.com/logs/
+
+
+3. Configuring filtlog
+----------------------
+
+filtlog expects its configuration file to be located in filtlog.conf.  An
+example configuration file is included as filtlog.conf.example.  You can copy
+that file to filtlog.conf and modify it to suit your needs.  Full details on the
+various configuration file options are provided inline in filtlog.conf.example.
+
+
+4. Performance
+--------------
+
+filtlog can take a while to run on a large set of log files.  As an example,
+running filtlog on 28 log files containing a total of 103,143 lines takes
+8.6 seconds to run using Ruby 1.8 on a 1.3 GHz Pentium M running Ubuntu 8.10 and
+7.9 seconds using Ruby 1.9 on the same machine.
+
+Since filtlog does not make significant use of Ruby's dynamic language features,
+it should be easy to convert filtlog directly to C or some other static
+language whose compiler could offer better performance.  ruby2c
+(http://rubyforge.org/projects/ruby2c/) may be able to convert it automatically,
+though this has not yet been tried.
+
+
+--
+  Copyright (C) 2009  Denver Gingerich <denver@ossguy.com>
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
