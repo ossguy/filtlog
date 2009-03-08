@@ -18,6 +18,27 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
+if ARGV.empty?
+	warn ""
+	warn "filtlog user agent summarizer"
+	warn "Copyright 2009 Denver Gingerich"
+	warn ""
+	warn "This program is free software; you may redistribute it under the"
+	warn "terms of the ISC licence as shown at the top of user_agents.rb."
+	warn ""
+	warn "Usage: #{$0} <log_files(s)>"
+	warn ""
+	warn "This program creates a list of all user agents who accessed a web"
+	warn "site given the web server logs.  The list shows how many accesses"
+	warn "each user agent made, going from highest to lowest.  This is"
+	warn "useful for finding bots which can be added to the bot exclusion"
+	warn "list (bot_ids) in filtlog.conf.  Log files are assumed to be in"
+	warn "Apache Combined Log Format."
+	warn ""
+
+	exit 1
+end
+
 views = Hash.new(0)
 
 ignore_prefixes = [
