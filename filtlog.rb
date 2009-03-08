@@ -19,7 +19,7 @@ ignore_prefixes = []
 bot_ids = []
 page_names = {}
 
-conf_file = 'page_views.conf'
+conf_file = 'filtlog.conf'
 if File.readable? conf_file
 	eval File.read(conf_file)
 end
