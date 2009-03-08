@@ -4,7 +4,18 @@
 # that all pages should be displayed in the output, use a value less than or
 # equal to 0.  filtlog will only display the top N results (by number of page
 # views), including their associated referers, where N is the value of
-# num_pages.
+# num_pages.  As an example, using filtlog with num_pages = 2 and
+# num_referers = 3 will give output like the following:
+#
+# 874     /?p=172 Vimeo Downloader 0.1 released
+#     230     -
+#     75      http://ossguy.com/?p=172
+#     13      http://www.google.com/search?q=vimeo+downloader&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:en-US:official&client=firefox-a
+# 846     /
+#     616     -
+#     21      http://ossguy.com/?p=266
+#     14      http://ossguy.com/?p=226
+#
 num_pages = 0
 
 # num_referers represents the number of referers per page to display in the
