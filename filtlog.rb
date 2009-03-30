@@ -18,6 +18,8 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
+require 'cgi'
+
 if ARGV.empty?
 	warn ""
 	warn "filtlog - a web server log filter/summarizer"
@@ -69,6 +71,28 @@ ARGV.each do|arg|
 			views[page] += 1
 			if 0 == referers[page]
 				referers[page] = Hash.new(0)
+			end
+			case referer
+				when /http:\/\/www\.google/
+					engine = 'Google'
+					q = 'q'
+				when /http:\/\/blogsearch\.google/
+					engine = 'Google blog'
+					q = 'q'
+				when /http:\/\/search\.yahoo/
+					engine = 'Yahoo'
+					q = 'p'
+				when /http:\/\/search\.live/
+					engine = 'Live'
+					q = 'q'
+				else
+					q = nil
+			end
+			if q
+				ret = referer.scan(/(?:\?|&)#{q}=([^&]+)/)
+				if ret[0]
+					referer = engine + ': ' + CGI::unescape(ret[0][0])
+				end
 			end
 			referers[page][referer] += 1
 		end
