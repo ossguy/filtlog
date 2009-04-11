@@ -50,6 +50,7 @@ num_referers = 0
 ignore_prefixes = []
 bot_ids = []
 page_names = {}
+ignore_referers = []
 
 conf_file = 'filtlog.conf'
 if File.readable? conf_file
@@ -68,6 +69,9 @@ ARGV.each do|arg|
 				throw :OUTER if user_agent.include? id
 			}
 			referer = line.split('"')[3]
+			ignore_referers.each {|referer_substr|
+				throw :OUTER if referer.include? referer_substr
+			}
 			views[page] += 1
 			if 0 == referers[page]
 				referers[page] = Hash.new(0)

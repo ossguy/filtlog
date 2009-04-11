@@ -97,3 +97,11 @@ page_names = {
 	'/?p=80'	=> 'StarCraft Power Saver 0.2 released',
 	'/?p=27'	=> 'OLPC XO and ASUS Eee PC SD card performance'
 }
+
+# Any accesses made with a referer in this list will not be included in the
+# filtlog results output.  This can be useful for removing results made by
+# spammers that clutter the output, such as long referers containing several
+# comma-separated URLs.  This list is likely to be highly web site-specific.
+ignore_referers = [
+	', '
+]
