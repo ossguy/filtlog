@@ -51,6 +51,7 @@ ignore_prefixes = []
 bot_ids = []
 page_names = {}
 ignore_referers = []
+search_engine_defs = []
 
 conf_file = 'filtlog.conf'
 if File.readable? conf_file
@@ -76,22 +77,15 @@ ARGV.each do|arg|
 			if 0 == referers[page]
 				referers[page] = Hash.new(0)
 			end
-			case referer
-				when /http:\/\/www\.google/
-					engine = 'Google'
-					q = 'q'
-				when /http:\/\/blogsearch\.google/
-					engine = 'Google blog'
-					q = 'q'
-				when /http:\/\/search\.yahoo/
-					engine = 'Yahoo'
-					q = 'p'
-				when /http:\/\/search\.live/
-					engine = 'Live'
-					q = 'q'
-				else
-					q = nil
-			end
+			engine = nil
+			q = nil
+			search_engine_defs.each {|engine_def|
+				if referer =~ /#{engine_def[:identifier]}/
+					engine = engine_def[:name]
+					q = engine_def[:q]
+					break
+				end
+			}
 			if q
 				ret = referer.scan(/(?:\?|&)#{q}=([^&]+)/)
 				if ret[0]

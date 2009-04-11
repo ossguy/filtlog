@@ -105,3 +105,33 @@ page_names = {
 ignore_referers = [
 	', '
 ]
+
+# filtlog will replace referer URLs from known search engines (identified by a
+# URL that contains one of the following :identifier strings) with the name of
+# the search engine (:name) following by the unescaped search query (the value
+# of the :q variable in the URL).  For example, the referer URL
+# "http://www.google.de/search?q=vimeo+downloader" would be replaced with
+# "Google: vimeo downloader" in the filtlog output using the first definition
+# below.
+search_engine_defs = [
+	{
+		:identifier	=> 'http:\/\/www\.google',
+		:name		=> 'Google',
+		:q		=> 'q'
+	},
+	{
+		:identifier	=> 'http:\/\/blogsearch\.google',
+		:name		=> 'Google blog',
+		:q		=> 'q'
+	},
+	{
+		:identifier	=> 'http:\/\/search\.yahoo',
+		:name		=> 'Yahoo',
+		:q		=> 'p'
+	},
+	{
+		:identifier	=> 'http:\/\/search\.live',
+		:name		=> 'Live',
+		:q		=> 'q'
+	}
+]
