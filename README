@@ -12,9 +12,9 @@ http://github.com/ossguy/filtlog
 1. Running filtlog
 ------------------
 
-filtlog requires Ruby to run.  If you don't have Ruby, you can download it from
-http://www.ruby-lang.org/en/downloads/ or, if you're using Debian or a
-derivative such as Ubuntu, you can run "sudo apt-get install ruby".
+filtlog requires Ruby 1.8.7 or greater to run.  If you don't have Ruby, you can
+download it from http://www.ruby-lang.org/en/downloads/ or, if you're using
+Debian or a derivative such as Ubuntu, you can run "sudo apt-get install ruby".
 
 To run filtlog with the default options, simply pass the web server log file(s)
 you want to summarize to filtlog.rb (ie. "./filtlog.rb access.log").  The log
