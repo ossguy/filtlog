@@ -58,7 +58,7 @@ bot_ids = [
 
 # Any pages whose names start with an element of ignore_prefixes will not be
 # included in the filtlog results output.  This can be useful for removing
-# frequently-accessed by uninteresting (to the web site owner) parts of a web
+# frequently-accessed but uninteresting (to the web site owner) parts of a web
 # site like robots.txt or favicon.ico.  This list is likely to be highly
 # web site-specific.
 ignore_prefixes = [
