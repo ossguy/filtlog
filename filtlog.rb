@@ -52,6 +52,7 @@ bot_ids = []
 page_names = {}
 ignore_referers = []
 search_engine_defs = []
+ignore_hosts = []
 
 conf_file = 'filtlog.conf'
 if File.readable? conf_file
@@ -61,18 +62,26 @@ end
 ARGV.each do|arg|
 	File.foreach(arg) do|line|
 		catch :OUTER do
-			page = line.split(' ')[6]
+			space_split = line.split(' ')
+			page = space_split[6]
 			ignore_prefixes.each {|prefix|
 				throw :OUTER if page.start_with? prefix
 			}
-			user_agent = line.split('"')[5]
+			log_host = space_split[0]
+			ignore_hosts.each {|ignore_host|
+				throw :OUTER if log_host == ignore_host
+			}
+
+			quote_split = line.split('"')
+			user_agent = quote_split[5]
 			bot_ids.each {|id|
 				throw :OUTER if user_agent.include? id
 			}
-			referer = line.split('"')[3]
+			referer = quote_split[3]
 			ignore_referers.each {|referer_substr|
 				throw :OUTER if referer.include? referer_substr
 			}
+
 			views[page] += 1
 			if 0 == referers[page]
 				referers[page] = Hash.new(0)

@@ -135,3 +135,16 @@ search_engine_defs = [
 		:q		=> 'q'
 	}
 ]
+
+# Any accesses made from a host or IP in this list will not be included in the
+# filtlog results output.  This can be useful for removing results made by
+# automated bots you know of that are identifiable only by host or IP address,
+# not by user agent, such as the Are My Sites Up bot (see
+# http://blog.aremysitesup.com/2009/03/26/two-ip-addresses/ ).  Note that
+# filtlog does direct string compares; it does not resolve hostnames or do
+# reverse lookups on IPs.  So be sure the strings in ignore_hosts match the
+# strings you see in your log file exactly.
+ignore_hosts = [
+	'72.2.117.212',
+	'72.2.116.95'
+] 
