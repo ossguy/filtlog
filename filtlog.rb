@@ -106,7 +106,7 @@ ARGV.each do|arg|
 	end
 end
 
-sorted_views = views.sort{|a,b| b[1] <=> a[1]}
+sorted_views = views.sort_by{|page,views| [-views, page]}
 if num_pages > 0
 	sorted_views = sorted_views[0, num_pages]
 end
